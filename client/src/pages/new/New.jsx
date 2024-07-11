@@ -2,7 +2,7 @@ import "./new.scss";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useContext, useState } from "react";
 import axios from "axios";
-import Navbar from "../../components/navbar/Navbar";
+// import Navbar from "../../components/navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -17,6 +17,7 @@ const New = ({ inputs}) => {
 const {loading, error, dispatch}= useContext(AuthContext);
 
  // console.log(inputs);
+ 
   const handleChange= (e)=>{
     setInfo((prev)=>({
       ...prev,
@@ -36,21 +37,27 @@ const handleClick= async(e)=>{
       ...info,
       img:url,
     };
-    console.log(newUser)
+  //  console.log(newUser)
 await axios.post("/auth/register",newUser);
-
+// const {user}= useContext(AuthContext);
+// console.log(newUser);
+// navigate("/")
 setCredentials({
   username: newUser.username,
   password: newUser.password
 });
- dispatch({type:"LOGIN_START"});
-        try {
-            const res= await axios.post("/auth/login",credentials);
-            dispatch({type:"LOGIN_SUCCESS",payload: res.data.details});
-            navigate("/");
-        } catch (err) {
-            dispatch({type:"LOGIN_FAILURE", payload: err.response.data});
-        }
+async function Login(){
+  dispatch({type:"LOGIN_START"});
+  try {
+      const res= await axios.post("/auth/login",credentials);
+      dispatch({type:"LOGIN_SUCCESS",payload: res.data.details});
+      navigate("/");
+  } catch (err) {
+      dispatch({type:"LOGIN_FAILURE", payload: err.response.data});
+  }
+}
+setTimeout(Login, 2000);
+
 
   } catch (error) {
     console.log(error)

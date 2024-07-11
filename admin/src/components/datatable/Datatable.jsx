@@ -10,10 +10,11 @@ const Datatable = ({columns}) => {
   const path = location.pathname.split("/")[1];
   const [list, setList]= useState();
   const {data,loading,error}= useFetch(`/${path}`);
-
+console.log(data);
  useEffect(()=>{
   setList(data)
  },[data]);
+ console.log(data);
 
   const handleDelete = async (id) => {
     try {

@@ -11,7 +11,7 @@ import New from "./pages/new/New";
 import { userInputs } from "./formSource.js";
 
 function App() {
-  console.log(userInputs);
+  // console.log(userInputs);
   return (
     <BrowserRouter>
       <Routes>
