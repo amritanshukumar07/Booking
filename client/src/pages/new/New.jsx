@@ -38,7 +38,7 @@ const handleClick= async(e)=>{
       img:url,
     };
   //  console.log(newUser)
-await axios.post("/auth/register",newUser);
+await axios.post("/api/auth/register",newUser);
 // const {user}= useContext(AuthContext);
 // console.log(newUser);
 // navigate("/")
@@ -49,7 +49,7 @@ setCredentials({
 async function Login(){
   dispatch({type:"LOGIN_START"});
   try {
-      const res= await axios.post("/auth/login",credentials);
+      const res= await axios.post("/api/auth/login",credentials);
       dispatch({type:"LOGIN_SUCCESS",payload: res.data.details});
       navigate("/");
   } catch (err) {

@@ -10,11 +10,13 @@ const app=express();
 dotenv.config();
 // add cors middleware
 
-
+app.use(express.static('build'));
 app.use(cors());
 app.get('/products/:id', function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-});
+    res.json({msg: 'This is CORS-enabled for all origins!'})
+  })
+   
+
 
 const connect= async()=>{
     try {
@@ -60,7 +62,8 @@ app.use((err,req,res,next)=>{
     });
 });
 
-app.listen(8800,()=>{
+app.listen(8800, function () {
     connect();
     console.log("connected to backend!");
-});
+   
+  });
