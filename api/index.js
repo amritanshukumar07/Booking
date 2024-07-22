@@ -6,15 +6,19 @@ import authRoute from "./routes/auth.js";import hotelsRoute from "./routes/hotel
 import usersRoute from "./routes/users.js";
 import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
+
 const app=express();
 dotenv.config();
 // add cors middleware
 
 app.use(express.static('build'));
 app.use(cors());
+
 app.get('/products/:id', function (req, res, next) {
     res.json({msg: 'This is CORS-enabled for all origins!'})
-  })
+  });
+
+  
    
 
 

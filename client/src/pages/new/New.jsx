@@ -4,17 +4,17 @@ import { useContext, useState } from "react";
 import axios from "axios";
 // import Navbar from "../../components/navbar/Navbar";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+// import { AuthContext } from "../../context/AuthContext";
 
 const New = ({ inputs}) => {
   const [file, setFile] = useState("");
   const [info,setInfo]=useState({});
   const navigate= useNavigate();
-  const [credentials, setCredentials]=useState({
-    username: undefined,
-    password: undefined
-})
-const {loading, error, dispatch}= useContext(AuthContext);
+//   const [credentials, setCredentials]=useState({
+//     username: undefined,
+//     password: undefined
+// })
+// const {loading, error, dispatch}= useContext(AuthContext);
 
  // console.log(inputs);
  
@@ -37,26 +37,26 @@ const handleClick= async(e)=>{
       ...info,
       img:url,
     };
-  //  console.log(newUser)
-await axios.post("/api/auth/register",newUser);
+    // console.log(newUser)
+ await axios.post("/api/auth/register",newUser);
 // const {user}= useContext(AuthContext);
 // console.log(newUser);
-// navigate("/")
-setCredentials({
-  username: newUser.username,
-  password: newUser.password
-});
-async function Login(){
-  dispatch({type:"LOGIN_START"});
-  try {
-      const res= await axios.post("/api/auth/login",credentials);
-      dispatch({type:"LOGIN_SUCCESS",payload: res.data.details});
-      navigate("/");
-  } catch (err) {
-      dispatch({type:"LOGIN_FAILURE", payload: err.response.data});
-  }
-}
-setTimeout(Login, 2000);
+ navigate("/")
+// setCredentials({
+//   username: newUser.username,
+//   password: newUser.password
+// });
+// async function Login(){
+//   dispatch({type:"LOGIN_START"});
+//   try {
+//       const res= await axios.post("/api/auth/login",credentials);
+//       dispatch({type:"LOGIN_SUCCESS",payload: res.data.details});
+//       navigate("/");
+//   } catch (err) {
+//       dispatch({type:"LOGIN_FAILURE", payload: err.response.data});
+//   }
+// }
+// setTimeout(Login, 2000);
 
 
   } catch (error) {

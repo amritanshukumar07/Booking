@@ -20,11 +20,11 @@ useEffect(()=>{
 };
 fetchData();
 },[url]);
-
+// console.log(url);
 const reFetch= async ()=>{
     setLoading(true);
     try {
-        const res =await axios.get(`/api/${url}`);
+        const res =await axios.get(`/api${url}`);
         setData(res.data);
     } catch (err) {
         setError(err);

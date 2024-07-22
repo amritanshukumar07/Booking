@@ -24,7 +24,6 @@ const Hotel = () => {
   const location= useLocation();
   const id= location.pathname.split("/")[2];
 const {data,loading,error}=useFetch(`/hotels/find/${id}`) ;
-
 const {user}= useContext(AuthContext);
 const navigate= useNavigate();
 
